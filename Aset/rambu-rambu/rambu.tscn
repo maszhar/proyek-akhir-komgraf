@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://wfslmpq1tg44"]
+
+[ext_resource type="PackedScene" uid="uid://ck3vat7rbkv80" path="res://Aset/rambu-rambu/scene.gltf" id="1_dgxo1"]
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_dgxo1")]
+
+[node name="metal street props low poly" parent="Sketchfab_model/street_city_props_fbx/RootNode" index="0"]
+visible = false
+
+[node name="metal street props low poly_002" parent="Sketchfab_model/street_city_props_fbx/RootNode" index="1"]
+visible = false
+
+[node name="metal street props low poly_003" parent="Sketchfab_model/street_city_props_fbx/RootNode" index="2"]
+visible = false
+
+[node name="metal street props low poly_005" parent="Sketchfab_model/street_city_props_fbx/RootNode" index="3"]
+visible = false
+
+[node name="metal street props low poly_012" parent="Sketchfab_model/street_city_props_fbx/RootNode" index="5"]
+visible = false
