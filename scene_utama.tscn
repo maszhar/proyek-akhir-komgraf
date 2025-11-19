@@ -1,10 +1,32 @@
-[gd_scene load_steps=6 format=3 uid="uid://cllprdclbw3pk"]
+[gd_scene load_steps=11 format=3 uid="uid://cllprdclbw3pk"]
 
 [ext_resource type="PackedScene" uid="uid://mmpxxkx54f8q" path="res://Aset/siswa/scene.gltf" id="1_njcyr"]
 [ext_resource type="PackedScene" uid="uid://dvk4ob1jpst5g" path="res://Aset/jalan/scene.gltf" id="1_qqyr1"]
 [ext_resource type="PackedScene" uid="uid://ds63f001264l1" path="res://Aset/mobil/scene.gltf" id="2_dl44u"]
 [ext_resource type="Script" uid="uid://ccgahe1r78nkw" path="res://Aset/mobil/scene.gd" id="3_hp4an"]
 [ext_resource type="PackedScene" uid="uid://wfslmpq1tg44" path="res://Aset/rambu-rambu/rambu.tscn" id="4_fpvlf"]
+
+[sub_resource type="DPITexture" id="DPITexture_fpvlf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ngrv3"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.43, 0, 0.0071665575, 1)
+emission_energy_multiplier = 200.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_fpvlf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oiqtq"]
+albedo_color = Color(0.5186591, 0.4684993, 0.063896514, 1)
+emission_enabled = true
+emission = Color(0.36064115, 0.3271145, 0.03548016, 1)
+emission_energy_multiplier = 200.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hp4an"]
+albedo_color = Color(0.007774356, 0.16884315, 0.008776799, 1)
+emission_enabled = true
+emission = Color(0.021599993, 0.24, 0.03251999, 1)
+emission_energy_multiplier = 200.0
 
 [node name="Node3D" type="Node3D"]
 
@@ -31,8 +53,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4482.4395)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+visible = false
 light_energy = 5.0
 shadow_enabled = true
 
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("4_fpvlf")]
 transform = Transform3D(90, 0, -1.35896225e-05, 0, 90, 0, -1.35896225e-05, 0, -90, 609.3546, 0, 1717.7446)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.99436396, 0.106021106, 0, -0.106021106, 0.99436396, 0, 136.88565, 763.5621)
+visible = false
+light_energy = 1000.0
+light_projector = SubResource("DPITexture_fpvlf")
+light_size = 0.423
+spot_range = 217.554
+
+[node name="Lampu Merah" type="MeshInstance3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, -4.371139e-08, -17, 0, 1, -7.430936e-07, 412.93317, 294.35062, 1651.3331)
+material_override = SubResource("StandardMaterial3D_ngrv3")
+mesh = SubResource("CylinderMesh_fpvlf")
+
+[node name="Lampu Kuning" type="MeshInstance3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, -4.371139e-08, -17, 0, 1, -7.430936e-07, 412.93317, 268.47925, 1651.3331)
+visible = false
+material_override = SubResource("StandardMaterial3D_oiqtq")
+mesh = SubResource("CylinderMesh_fpvlf")
+
+[node name="Lampu Hijau" type="MeshInstance3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, -4.371139e-08, -17, 0, 1, -7.430936e-07, 412.93317, 243.40582, 1651.3331)
+visible = false
+material_override = SubResource("StandardMaterial3D_hp4an")
+mesh = SubResource("CylinderMesh_fpvlf")
