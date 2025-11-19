@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cllprdclbw3pk"]
+[gd_scene load_steps=6 format=3 uid="uid://cllprdclbw3pk"]
 
 [ext_resource type="PackedScene" uid="uid://mmpxxkx54f8q" path="res://Aset/siswa/scene.gltf" id="1_njcyr"]
 [ext_resource type="PackedScene" uid="uid://dvk4ob1jpst5g" path="res://Aset/jalan/scene.gltf" id="1_qqyr1"]
 [ext_resource type="PackedScene" uid="uid://ds63f001264l1" path="res://Aset/mobil/scene.gltf" id="2_dl44u"]
+[ext_resource type="Script" uid="uid://ccgahe1r78nkw" path="res://Aset/mobil/scene.gd" id="3_hp4an"]
 [ext_resource type="PackedScene" uid="uid://wfslmpq1tg44" path="res://Aset/rambu-rambu/rambu.tscn" id="4_fpvlf"]
 
 [node name="Node3D" type="Node3D"]
@@ -12,6 +13,10 @@ transform = Transform3D(-24.273426, 0, -76.22861, 0, 80, 0, 76.22861, 0, -24.273
 
 [node name="Mobil" parent="." instance=ExtResource("2_dl44u")]
 transform = Transform3D(70, 0, 0, 0, 70, 0, 0, 0, 70, 208.43416, 37.775604, -444.23013)
+script = ExtResource("3_hp4an")
+
+[node name="Camera3D" type="Camera3D" parent="Mobil"]
+transform = Transform3D(-0.014285714, 2.9578642e-10, -1.2133646e-09, 9.743317e-12, 0.013905248, 0.0032750203, 1.2488587e-09, 0.0032750203, -0.013905248, -0.24711537, 2.0931273, -5.4750824)
 
 [node name="Jalan" parent="." instance=ExtResource("1_qqyr1")]
 
@@ -23,9 +28,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2984.6575)
 
 [node name="Jalan4" parent="." instance=ExtResource("1_qqyr1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4482.4395)
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 2.070505e-08, -8.493552e-08, 6.820322e-10, 0.97336733, 0.22925141, 8.7420105e-08, 0.22925141, -0.97336733, 191.13608, 184.29453, -827.4859)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
