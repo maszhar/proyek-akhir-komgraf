@@ -7,15 +7,17 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	var current_position = get_position()
 	var velocity: Vector3 = Vector3.ZERO
 
 	# Jika tombol dengan input action "move_up" ditekan
-	if Input.is_action_pressed("move_up"):
+	if Input.is_action_pressed("move_up") && current_position.z < 3000:
 		velocity.z += 1  # bergerak ke depan (arah -Z)
 		
-	if Input.is_action_pressed("move_down"):
+	if Input.is_action_pressed("move_down") && current_position.z > -450:
 		velocity.z += -1
 
 	# Terapkan gerakan
