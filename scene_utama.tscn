@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cllprdclbw3pk"]
+[gd_scene load_steps=13 format=3 uid="uid://cllprdclbw3pk"]
 
 [ext_resource type="PackedScene" uid="uid://mmpxxkx54f8q" path="res://Aset/siswa/scene.gltf" id="1_njcyr"]
 [ext_resource type="PackedScene" uid="uid://dvk4ob1jpst5g" path="res://Aset/jalan/scene.gltf" id="1_qqyr1"]
 [ext_resource type="PackedScene" uid="uid://ds63f001264l1" path="res://Aset/mobil/scene.gltf" id="2_dl44u"]
 [ext_resource type="Script" uid="uid://ccgahe1r78nkw" path="res://Aset/mobil/scene.gd" id="3_hp4an"]
 [ext_resource type="PackedScene" uid="uid://wfslmpq1tg44" path="res://Aset/rambu-rambu/rambu.tscn" id="4_fpvlf"]
+[ext_resource type="Texture2D" uid="uid://bd2snb3wyyghs" path="res://Aset/zebra-cross.jpg" id="6_ngrv3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ngrv3"]
 albedo_color = Color(0, 0, 0, 1)
@@ -26,6 +27,12 @@ emission_enabled = true
 emission = Color(0.021599993, 0.24, 0.03251999, 1)
 emission_energy_multiplier = 200.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mc7i2"]
+albedo_texture = ExtResource("6_ngrv3")
+uv1_scale = Vector3(1, 10, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hp4an"]
+
 [node name="Node3D" type="Node3D"]
 
 [node name="Siswa" parent="." instance=ExtResource("1_njcyr")]
@@ -35,8 +42,15 @@ transform = Transform3D(-24.273426, 0, -76.22861, 0, 80, 0, 76.22861, 0, -24.273
 transform = Transform3D(70, 0, 0, 0, 70, 0, 0, 0, 70, 208.43416, 37.775604, -444.23013)
 script = ExtResource("3_hp4an")
 
+[node name="PesanMenerobos" type="Label3D" parent="Mobil"]
+transform = Transform3D(-8, 0, -1.2079664e-06, 0, 8, 0, 1.2079664e-06, 0, -8, 0.1689105, 6.801177, 6.3461447)
+visible = false
+modulate = Color(1, 0.100000024, 0, 1)
+outline_modulate = Color(0.26, 0.2236, 0.2236, 1)
+text = "Anda menerobos lampu merah"
+
 [node name="Camera3D" type="Camera3D" parent="Mobil"]
-transform = Transform3D(-0.014285714, 2.9578642e-10, -1.2133646e-09, 9.743317e-12, 0.013905248, 0.0032750203, 1.2488587e-09, 0.0032750203, -0.013905248, -0.24711537, 2.0931273, -5.4750824)
+transform = Transform3D(-0.014285714, 0, 1.2488968e-09, 0, 0.014285714, 0, -1.2488968e-09, 0, -0.014285714, 0, 2.093, -6.263)
 
 [node name="Jalan" type="Node3D" parent="."]
 
@@ -75,3 +89,8 @@ mesh = SubResource("CylinderMesh_fpvlf")
 transform = Transform3D(20, 0, 0, 0, -4.371139e-08, -17, 0, 1, -7.430936e-07, 412.93317, 243.40582, 1651.3331)
 material_override = SubResource("StandardMaterial3D_hp4an")
 mesh = SubResource("CylinderMesh_fpvlf")
+
+[node name="zebra cross" type="MeshInstance3D" parent="."]
+transform = Transform3D(-6.5567083e-06, 0, -780, 0, 1, 0, 150, 0, -3.4094883e-05, 0, -3, 1778.197)
+material_override = SubResource("StandardMaterial3D_mc7i2")
+mesh = SubResource("BoxMesh_hp4an")

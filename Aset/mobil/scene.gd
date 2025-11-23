@@ -20,15 +20,18 @@ var objekLampuHijau: Node3D
 var objekLampuKuning: Node3D
 var objekLampuMerah: Node3D
 var objekSiswa: Node3D
+var objekPesanMenerobos: Node3D
+var masuk_zebra_cross = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	menyebrang_pada = randf() * 1000 - 200
+	menyebrang_pada = randf() * 1500 - 200
 	print("Crossing at: " + str(menyebrang_pada))
 	objekLampuHijau = get_parent().get_node("Lampu Hijau")
 	objekLampuKuning = get_parent().get_node("Lampu Kuning")
 	objekLampuMerah = get_parent().get_node("Lampu Merah")
 	objekSiswa = get_parent().get_node("Siswa")
+	objekPesanMenerobos = get_node("PesanMenerobos")
 
 func cross(current_position: Vector3, delta_time):
 	if(kondisi_menyebrang == KONDISI_TELAH_MENYEBRANG):
@@ -78,7 +81,18 @@ func _process(delta: float) -> void:
 		velocity.z += -1
 
 	cross(current_position, delta)
-
+	
+	var masuk_zebra_cross_sebelumnya = masuk_zebra_cross
+	
+	if(current_position.z > 1550 && current_position.z < 1800):
+		masuk_zebra_cross = true;
+	else:
+		masuk_zebra_cross = false;
+	
+	if(masuk_zebra_cross != masuk_zebra_cross_sebelumnya && masuk_zebra_cross):
+		if(kondisi_menyebrang == KONDISI_SEDANG_MENYEBRANG && (progress_menyebrang == PROGRESS_LAMPU_MERAH || progress_menyebrang == PROGRESS_MENYEBRANG)):
+			objekPesanMenerobos.set_visible(true)
+	
 	# Terapkan gerakan
 	if velocity != Vector3.ZERO:
 		velocity = velocity.normalized() * speed * delta
