@@ -2,10 +2,20 @@ extends Node3D
 
 @export var speed: float = 5.0
 
-var crossing_at = 0.0
-var crossing_done = 0
-var crossing_progress = 0
-var crossing_elapsed = 0
+const PROGRESS_LAMPU_HIJAU = 0
+const PROGRESS_LAMPU_KUNING = 1
+const PROGRESS_LAMPU_MERAH = 2
+const PROGRESS_MENYEBRANG = 3
+const PROGRESS_SELESAI = 4
+
+const KONDISI_BELUM_MENYEBRANG = 0
+const KONDISI_SEDANG_MENYEBRANG = 1
+const KONDISI_TELAH_MENYEBRANG = 2
+
+var menyebrang_pada = 0.0
+var kondisi_menyebrang = KONDISI_BELUM_MENYEBRANG
+var progress_menyebrang = PROGRESS_LAMPU_HIJAU
+var kemajuan_waktu_menyebrang = 0
 var objekLampuHijau: Node3D
 var objekLampuKuning: Node3D
 var objekLampuMerah: Node3D
@@ -13,47 +23,47 @@ var objekSiswa: Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	crossing_at = randf() * 1000 - 200
-	print("Crossing at: " + str(crossing_at))
+	menyebrang_pada = randf() * 1000 - 200
+	print("Crossing at: " + str(menyebrang_pada))
 	objekLampuHijau = get_parent().get_node("Lampu Hijau")
 	objekLampuKuning = get_parent().get_node("Lampu Kuning")
 	objekLampuMerah = get_parent().get_node("Lampu Merah")
 	objekSiswa = get_parent().get_node("Siswa")
 
 func cross(current_position: Vector3, delta_time):
-	if(crossing_done == 2):
+	if(kondisi_menyebrang == KONDISI_TELAH_MENYEBRANG):
 		return
-	if(crossing_done == 0 && current_position.z < crossing_at):
+	if(kondisi_menyebrang == KONDISI_BELUM_MENYEBRANG && current_position.z < menyebrang_pada):
 		return
 		
-	crossing_done = 1
+	kondisi_menyebrang = KONDISI_SEDANG_MENYEBRANG
 	
-	if(crossing_progress == 0):
+	if(progress_menyebrang == PROGRESS_LAMPU_HIJAU):
 		print("Crossing")
 		# switch kuning
 		objekLampuHijau.set_visible(false)
 		objekLampuKuning.set_visible(true)
-		crossing_progress = 1;
+		progress_menyebrang = PROGRESS_LAMPU_KUNING;
 		
-	elif(crossing_progress == 1 && crossing_elapsed > 3):
+	elif(progress_menyebrang == PROGRESS_LAMPU_KUNING && kemajuan_waktu_menyebrang > 3):
 		objekLampuKuning.set_visible(false)
 		objekLampuMerah.set_visible(true)
-		crossing_progress = 2;
+		progress_menyebrang = PROGRESS_LAMPU_MERAH;
 		
-	elif(crossing_progress == 2 && crossing_elapsed > 4):
+	elif(progress_menyebrang == PROGRESS_LAMPU_MERAH && kemajuan_waktu_menyebrang > 4):
 		var crossingSpeed = Vector3.ZERO
 		crossingSpeed.z += 0.1
 		objekSiswa.translate(crossingSpeed)
 		if(objekSiswa.get_position().x < -450):
-			crossing_progress = 3;
+			progress_menyebrang = PROGRESS_MENYEBRANG;
 			
-	elif(crossing_progress == 3 && crossing_elapsed > 10):
+	elif(progress_menyebrang == PROGRESS_MENYEBRANG && kemajuan_waktu_menyebrang > 10):
 		objekLampuMerah.set_visible(false)
 		objekLampuHijau.set_visible(true)
-		crossing_progress = 4;
-		crossing_done = 2;
+		progress_menyebrang = PROGRESS_SELESAI;
+		kondisi_menyebrang = KONDISI_TELAH_MENYEBRANG;
 		
-	crossing_elapsed += delta_time
+	kemajuan_waktu_menyebrang += delta_time
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
