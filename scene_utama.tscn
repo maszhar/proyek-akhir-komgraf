@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cllprdclbw3pk"]
+[gd_scene load_steps=18 format=3 uid="uid://cllprdclbw3pk"]
 
 [ext_resource type="PackedScene" uid="uid://mmpxxkx54f8q" path="res://Aset/siswa/scene.gltf" id="1_njcyr"]
 [ext_resource type="PackedScene" uid="uid://dvk4ob1jpst5g" path="res://Aset/jalan/scene.gltf" id="1_qqyr1"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://ccgahe1r78nkw" path="res://Aset/mobil/scene.gd" id="3_hp4an"]
 [ext_resource type="PackedScene" uid="uid://wfslmpq1tg44" path="res://Aset/rambu-rambu/rambu.tscn" id="4_fpvlf"]
 [ext_resource type="Texture2D" uid="uid://bd2snb3wyyghs" path="res://Aset/zebra-cross.jpg" id="6_ngrv3"]
+[ext_resource type="Texture2D" uid="uid://b4dl4rud7l0ax" path="res://Aset/rambu-zebra.png" id="7_oiqtq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ngrv3"]
 albedo_color = Color(0, 0, 0, 1)
@@ -32,6 +33,17 @@ albedo_texture = ExtResource("6_ngrv3")
 uv1_scale = Vector3(1, 10, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_hp4an"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ahefr"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ngrv3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_61vyl"]
+albedo_texture = ExtResource("7_oiqtq")
+uv1_scale = Vector3(3, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_61vyl"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -94,3 +106,16 @@ mesh = SubResource("CylinderMesh_fpvlf")
 transform = Transform3D(-6.5567083e-06, 0, -780, 0, 1, 0, 150, 0, -3.4094883e-05, 0, -3, 1778.197)
 material_override = SubResource("StandardMaterial3D_mc7i2")
 mesh = SubResource("BoxMesh_hp4an")
+
+[node name="Rambu Zebra" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 450, 0, 201.56958)
+
+[node name="tiang rambu zebra" type="MeshInstance3D" parent="Rambu Zebra"]
+transform = Transform3D(10, 0, 0, 0, 100, 0, 0, 0, 10, 0, 100, 0)
+material_override = SubResource("StandardMaterial3D_ahefr")
+mesh = SubResource("CylinderMesh_ngrv3")
+
+[node name="papan rambu zebra" type="MeshInstance3D" parent="Rambu Zebra"]
+transform = Transform3D(60, 0, 0, 0, 60, 0, 0, 0, 5, 0, 181.48, -7.5)
+material_override = SubResource("StandardMaterial3D_61vyl")
+mesh = SubResource("BoxMesh_61vyl")
