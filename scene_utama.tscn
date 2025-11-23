@@ -61,6 +61,7 @@ transform = Transform3D(90, 0, -1.35896225e-05, 0, 90, 0, -1.35896225e-05, 0, -9
 
 [node name="Lampu Merah" type="MeshInstance3D" parent="."]
 transform = Transform3D(20, 0, 0, 0, -4.371139e-08, -17, 0, 1, -7.430936e-07, 412.93317, 294.35062, 1651.3331)
+visible = false
 material_override = SubResource("StandardMaterial3D_ngrv3")
 mesh = SubResource("CylinderMesh_fpvlf")
 
@@ -72,6 +73,5 @@ mesh = SubResource("CylinderMesh_fpvlf")
 
 [node name="Lampu Hijau" type="MeshInstance3D" parent="."]
 transform = Transform3D(20, 0, 0, 0, -4.371139e-08, -17, 0, 1, -7.430936e-07, 412.93317, 243.40582, 1651.3331)
-visible = false
 material_override = SubResource("StandardMaterial3D_hp4an")
 mesh = SubResource("CylinderMesh_fpvlf")
