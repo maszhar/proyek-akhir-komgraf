@@ -40,21 +40,22 @@ script = ExtResource("3_hp4an")
 [node name="Camera3D" type="Camera3D" parent="Mobil"]
 transform = Transform3D(-0.014285714, 2.9578642e-10, -1.2133646e-09, 9.743317e-12, 0.013905248, 0.0032750203, 1.2488587e-09, 0.0032750203, -0.013905248, -0.24711537, 2.0931273, -5.4750824)
 
-[node name="Jalan" parent="." instance=ExtResource("1_qqyr1")]
+[node name="Jalan" type="Node3D" parent="."]
 
-[node name="Jalan2" parent="." instance=ExtResource("1_qqyr1")]
+[node name="Jalan1" parent="Jalan" instance=ExtResource("1_qqyr1")]
+
+[node name="Jalan2" parent="Jalan" instance=ExtResource("1_qqyr1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1489.8264)
 
-[node name="Jalan3" parent="." instance=ExtResource("1_qqyr1")]
+[node name="Jalan3" parent="Jalan" instance=ExtResource("1_qqyr1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2984.6575)
 
-[node name="Jalan4" parent="." instance=ExtResource("1_qqyr1")]
+[node name="Jalan4" parent="Jalan" instance=ExtResource("1_qqyr1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4482.4395)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
-visible = false
-light_energy = 5.0
+light_energy = 1.206
 shadow_enabled = true
 
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("4_fpvlf")]
