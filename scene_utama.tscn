@@ -1,12 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cllprdclbw3pk"]
+[gd_scene load_steps=10 format=3 uid="uid://cllprdclbw3pk"]
 
 [ext_resource type="PackedScene" uid="uid://mmpxxkx54f8q" path="res://Aset/siswa/scene.gltf" id="1_njcyr"]
 [ext_resource type="PackedScene" uid="uid://dvk4ob1jpst5g" path="res://Aset/jalan/scene.gltf" id="1_qqyr1"]
 [ext_resource type="PackedScene" uid="uid://ds63f001264l1" path="res://Aset/mobil/scene.gltf" id="2_dl44u"]
 [ext_resource type="Script" uid="uid://ccgahe1r78nkw" path="res://Aset/mobil/scene.gd" id="3_hp4an"]
 [ext_resource type="PackedScene" uid="uid://wfslmpq1tg44" path="res://Aset/rambu-rambu/rambu.tscn" id="4_fpvlf"]
-
-[sub_resource type="DPITexture" id="DPITexture_fpvlf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ngrv3"]
 albedo_color = Color(0, 0, 0, 1)
@@ -60,14 +58,6 @@ shadow_enabled = true
 
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("4_fpvlf")]
 transform = Transform3D(90, 0, -1.35896225e-05, 0, 90, 0, -1.35896225e-05, 0, -90, 609.3546, 0, 1717.7446)
-
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.99436396, 0.106021106, 0, -0.106021106, 0.99436396, 0, 136.88565, 763.5621)
-visible = false
-light_energy = 1000.0
-light_projector = SubResource("DPITexture_fpvlf")
-light_size = 0.423
-spot_range = 217.554
 
 [node name="Lampu Merah" type="MeshInstance3D" parent="."]
 transform = Transform3D(20, 0, 0, 0, -4.371139e-08, -17, 0, 1, -7.430936e-07, 412.93317, 294.35062, 1651.3331)
