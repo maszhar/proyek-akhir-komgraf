@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://ibsy6u7wsrfn"]
+
+[ext_resource type="PackedScene" uid="uid://dvk4ob1jpst5g" path="res://Aset/jalan/scene.gltf" id="1_wpa4r"]
+
+[node name="Jalan" type="Node3D"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+
+[node name="Jalan1" parent="." instance=ExtResource("1_wpa4r")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="Jalan2" parent="." instance=ExtResource("1_wpa4r")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 299)
+
+[node name="Jalan3" parent="." instance=ExtResource("1_wpa4r")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 598)
+
+[node name="Jalan4" parent="." instance=ExtResource("1_wpa4r")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 448.244)
+
+[node name="Jalan5" parent="." instance=ExtResource("1_wpa4r")]
+transform = Transform3D(0.20000002, 0, 0, 0, 0.20000002, 0, 0, 0, 0.20000002, 0, 0, -895.02966)
+
+[node name="Jalan6" parent="." instance=ExtResource("1_wpa4r")]
+transform = Transform3D(0.20000002, 0, 0, 0, 0.20000002, 0, 0, 0, 0.20000002, 0, 0, -596.02966)
+
+[node name="Jalan7" parent="." instance=ExtResource("1_wpa4r")]
+transform = Transform3D(0.20000002, 0, 0, 0, 0.20000002, 0, 0, 0, 0.20000002, 0, 0, -297.0296)
+
+[node name="Jalan8" parent="." instance=ExtResource("1_wpa4r")]
+transform = Transform3D(0.20000002, 0, 0, 0, 0.20000002, 0, 0, 0, 0.20000002, 0, 0, -446.78564)

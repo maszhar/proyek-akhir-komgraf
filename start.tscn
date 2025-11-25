@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://dbohsjhpr4j7h"]
+
+[ext_resource type="Script" uid="uid://dfv0w2qy8cmrm" path="res://start.gd" id="1_qn1rc"]
+[ext_resource type="Texture2D" uid="uid://g4cj8vuqt6ff" path="res://screenshot.png" id="2_1n0d2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y5hus"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_oiuna"]
+material = SubResource("ShaderMaterial_y5hus")
+
+[sub_resource type="Gradient" id="Gradient_4a3qj"]
+colors = PackedColorArray(0.7695362, 0.59641224, 1.92523e-07, 1, 1, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_g38d0"]
+gradient = SubResource("Gradient_4a3qj")
+
+[sub_resource type="SystemFont" id="SystemFont_pob1m"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gophc"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p0nl4"]
+
+[node name="Start" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qn1rc")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 647.0
+texture = ExtResource("2_1n0d2")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.5
+offset_top = -20.0
+offset_right = 120.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CenterContainer"]
+position = Vector2(123.50001, 19.999996)
+rotation = 3.1415927
+scale = Vector2(309.50888, -67.3206)
+mesh = SubResource("QuadMesh_oiuna")
+texture = SubResource("GradientTexture1D_g38d0")
+
+[node name="Label" type="Label" parent="CenterContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_pob1m")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxTexture_gophc")
+theme_override_styles/focus = SubResource("StyleBoxTexture_p0nl4")
+text = "Press 'Space' to Start"

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dferhi0rxwr57"]
+
+[ext_resource type="PackedScene" uid="uid://b26q4ly3ypadp" path="res://gedung1.tscn" id="1_m7k8b"]
+[ext_resource type="PackedScene" uid="uid://cqk8ad660c1b7" path="res://gedung_v_2.tscn" id="2_o3tkm"]
+
+[node name="City" type="Node3D"]
+
+[node name="Gedung" parent="." instance=ExtResource("1_m7k8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -30)
+
+[node name="Gedung2" parent="." instance=ExtResource("1_m7k8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 2)
+
+[node name="GedungV2" parent="." instance=ExtResource("2_o3tkm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 39)
+
+[node name="GedungV3" parent="." instance=ExtResource("2_o3tkm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 83)
