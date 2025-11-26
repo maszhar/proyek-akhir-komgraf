@@ -158,10 +158,10 @@ anchor_left = 0.05
 anchor_top = 0.05
 anchor_right = 0.25
 anchor_bottom = 0.15
-offset_left = 750.4
+offset_left = 915.0
 offset_top = 20.599998
-offset_right = 750.4
-offset_bottom = 20.599998
+offset_right = 724.0
+offset_bottom = 6.599991
 theme_override_font_sizes/font_size = 42
 text = "10"
 horizontal_alignment = 2
@@ -172,13 +172,13 @@ anchor_left = 0.05
 anchor_top = 0.05
 anchor_right = 0.25
 anchor_bottom = 0.15
-offset_left = 983.4
+offset_left = 985.0
 offset_top = 40.6
-offset_right = 983.4
-offset_bottom = 40.6
+offset_right = 783.0
+offset_bottom = -3.0000076
 theme_override_fonts/font = SubResource("FontVariation_ngrv3")
 theme_override_font_sizes/font_size = 20
-text = "kmh"
+text = "km/h"
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.99436396, 0.106021106, 0, -0.106021106, 0.99436396, 0, 1, 10)
@@ -281,7 +281,7 @@ mesh = SubResource("BoxMesh_ngrv3")
 skeleton = NodePath("../..")
 
 [node name="Mobil" parent="." instance=ExtResource("2_dl44u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58203936, -54.369553)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0220587, 0.58203936, -54.369553)
 script = ExtResource("3_hp4an")
 
 [node name="Camera3D" type="Camera3D" parent="Mobil"]
