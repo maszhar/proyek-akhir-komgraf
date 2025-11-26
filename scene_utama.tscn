@@ -1,12 +1,19 @@
-[gd_scene load_steps=18 format=3 uid="uid://cllprdclbw3pk"]
+[gd_scene load_steps=19 format=3 uid="uid://cllprdclbw3pk"]
 
 [ext_resource type="PackedScene" uid="uid://mmpxxkx54f8q" path="res://Aset/siswa/scene.gltf" id="1_njcyr"]
-[ext_resource type="PackedScene" uid="uid://dvk4ob1jpst5g" path="res://Aset/jalan/scene.gltf" id="1_qqyr1"]
 [ext_resource type="PackedScene" uid="uid://ds63f001264l1" path="res://Aset/mobil/scene.gltf" id="2_dl44u"]
+[ext_resource type="PackedScene" uid="uid://dferhi0rxwr57" path="res://city.tscn" id="2_oiqtq"]
 [ext_resource type="Script" uid="uid://ccgahe1r78nkw" path="res://Aset/mobil/scene.gd" id="3_hp4an"]
+[ext_resource type="Script" uid="uid://blg26253rdhlu" path="res://tetot_2.gd" id="3_ngrv3"]
 [ext_resource type="PackedScene" uid="uid://wfslmpq1tg44" path="res://Aset/rambu-rambu/rambu.tscn" id="4_fpvlf"]
-[ext_resource type="Texture2D" uid="uid://bd2snb3wyyghs" path="res://Aset/zebra-cross.jpg" id="6_ngrv3"]
-[ext_resource type="Texture2D" uid="uid://b4dl4rud7l0ax" path="res://Aset/rambu-zebra.png" id="7_oiqtq"]
+[ext_resource type="PackedScene" uid="uid://ibsy6u7wsrfn" path="res://jalan.tscn" id="5_hp4an"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ground"]
+albedo_color = Color(0.4, 0.35, 0.25, 1)
+normal_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ground"]
+size = Vector2(5000, 10000)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ngrv3"]
 albedo_color = Color(0, 0, 0, 1)
@@ -28,94 +35,262 @@ emission_enabled = true
 emission = Color(0.021599993, 0.24, 0.03251999, 1)
 emission_energy_multiplier = 200.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mc7i2"]
-albedo_texture = ExtResource("6_ngrv3")
-uv1_scale = Vector3(1, 10, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_oiqtq"]
+size = Vector3(10, 3, 0.5)
 
-[sub_resource type="BoxMesh" id="BoxMesh_hp4an"]
+[sub_resource type="FontVariation" id="FontVariation_ngrv3"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ahefr"]
-albedo_color = Color(0, 0, 0, 1)
+[sub_resource type="DPITexture" id="DPITexture_fpvlf"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_ngrv3"]
+[sub_resource type="BoxMesh" id="BoxMesh_ngrv3"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_61vyl"]
-albedo_texture = ExtResource("7_oiqtq")
-uv1_scale = Vector3(3, 2, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_61vyl"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_hp4an"]
+size = Vector3(2, 1, 3.8)
 
 [node name="Node3D" type="Node3D"]
 
-[node name="Siswa" parent="." instance=ExtResource("1_njcyr")]
-transform = Transform3D(-24.273426, 0, -76.22861, 0, 80, 0, 76.22861, 0, -24.273426, 428.61203, 15.139389, 1778.1973)
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+material_override = SubResource("StandardMaterial3D_ground")
+mesh = SubResource("PlaneMesh_ground")
 
-[node name="Mobil" parent="." instance=ExtResource("2_dl44u")]
-transform = Transform3D(70, 0, 0, 0, 70, 0, 0, 0, 70, 208.43416, 37.775604, -444.23013)
-script = ExtResource("3_hp4an")
+[node name="Terrain" type="Node3D" parent="."]
 
-[node name="PesanMenerobos" type="Label3D" parent="Mobil"]
-transform = Transform3D(-8, 0, -1.2079664e-06, 0, 8, 0, 1.2079664e-06, 0, -8, 0.1689105, 6.801177, 6.3461447)
+[node name="Jalan1" parent="." instance=ExtResource("5_hp4an")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, -14.369553)
+
+[node name="Jalan2" parent="." instance=ExtResource("5_hp4an")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 73.63045)
+
+[node name="City" parent="." instance=ExtResource("2_oiqtq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.369553)
+
+[node name="City2" parent="." instance=ExtResource("2_oiqtq")]
+transform = Transform3D(-0.99999994, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.99999994, 0, 0, 43.357666)
+
+[node name="Tetot2" type="Node3D" parent="."]
+script = ExtResource("3_ngrv3")
+
+[node name="Siswa" parent="Tetot2" instance=ExtResource("1_njcyr")]
+transform = Transform3D(-0.30341783, 0, -0.9528576, 0, 1, 0, 0.9528576, 0, -0.30341783, 4.364, 0.15691754, 10.759408)
+
+[node name="Lampulalulintas" type="Node3D" parent="Tetot2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.568019, -0.013593942, 9.715697)
+
+[node name="Tiang" parent="Tetot2/Lampulalulintas" instance=ExtResource("4_fpvlf")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="Node3D" type="Node3D" parent="Tetot2/Lampulalulintas"]
+transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 2.1871057, 2.7182589, -0.74457264)
+
+[node name="LampuMerah" type="MeshInstance3D" parent="Tetot2/Lampulalulintas/Node3D"]
+transform = Transform3D(0.5, 0, 0, 0, -1.0927848e-09, -0.425, 0, 0.025, -1.857734e-08, 0, 1.2, 0)
+material_override = SubResource("StandardMaterial3D_ngrv3")
+mesh = SubResource("CylinderMesh_fpvlf")
+skeleton = NodePath("../../../../..")
+
+[node name="LampuKuning" type="MeshInstance3D" parent="Tetot2/Lampulalulintas/Node3D"]
+transform = Transform3D(0.5, 0, 0, 0, -1.0927848e-09, -0.425, 0, 0.025, -1.857734e-08, 0, 0.6, 0)
+material_override = SubResource("StandardMaterial3D_oiqtq")
+mesh = SubResource("CylinderMesh_fpvlf")
+skeleton = NodePath("../../../../..")
+
+[node name="LampuHijau" type="MeshInstance3D" parent="Tetot2/Lampulalulintas/Node3D"]
+transform = Transform3D(0.5, 0, 0, 0, -1.0927848e-09, -0.425, 0, 0.025, -1.857734e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_hp4an")
+mesh = SubResource("CylinderMesh_fpvlf")
+skeleton = NodePath("../../../../..")
+
+[node name="tetotcollition" type="Area3D" parent="Tetot2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tetot2/tetotcollition"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+shape = SubResource("BoxShape3D_oiqtq")
+debug_color = Color(0.99628705, 0, 0.19827783, 0.41960785)
+
+[node name="redcollition" type="Area3D" parent="Tetot2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tetot2/redcollition"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.679707)
+shape = SubResource("BoxShape3D_oiqtq")
+debug_color = Color(0.99628705, 0, 0.19827783, 0.41960785)
+
+[node name="CenterContainer" type="CenterContainer" parent="Tetot2"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.125
+anchor_right = 0.5
+anchor_bottom = 0.125
+grow_horizontal = 2
+
+[node name="WarningLabel" type="Label" parent="Tetot2/CenterContainer"]
 visible = false
-modulate = Color(1, 0.100000024, 0, 1)
-outline_modulate = Color(0.26, 0.2236, 0.2236, 1)
-text = "Anda menerobos lampu merah"
-
-[node name="Camera3D" type="Camera3D" parent="Mobil"]
-transform = Transform3D(-0.014285714, 0, 1.2488968e-09, 0, 0.014285714, 0, -1.2488968e-09, 0, -0.014285714, 0, 2.093, -6.263)
-
-[node name="Jalan" type="Node3D" parent="."]
-
-[node name="Jalan1" parent="Jalan" instance=ExtResource("1_qqyr1")]
-
-[node name="Jalan2" parent="Jalan" instance=ExtResource("1_qqyr1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1489.8264)
-
-[node name="Jalan3" parent="Jalan" instance=ExtResource("1_qqyr1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2984.6575)
-
-[node name="Jalan4" parent="Jalan" instance=ExtResource("1_qqyr1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4482.4395)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Kurangi Kecepatan Anda!"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
-light_energy = 1.206
+light_energy = 5.0
 shadow_enabled = true
 
-[node name="Sketchfab_Scene" parent="." instance=ExtResource("4_fpvlf")]
-transform = Transform3D(90, 0, -1.35896225e-05, 0, 90, 0, -1.35896225e-05, 0, -90, 609.3546, 0, 1717.7446)
+[node name="SpeedUI" type="CanvasLayer" parent="."]
 
-[node name="Lampu Merah" type="MeshInstance3D" parent="."]
-transform = Transform3D(20, 0, 0, 0, -4.371139e-08, -17, 0, 1, -7.430936e-07, 412.93317, 294.35062, 1651.3331)
+[node name="MeshInstance2D2" type="ColorRect" parent="SpeedUI"]
+physics_interpolation_mode = 0
+offset_left = 973.0
+offset_top = 46.0
+offset_right = 1107.0
+offset_bottom = 120.0
+color = Color(0.26983154, 0.67117935, 0.9999991, 1)
+
+[node name="MeshInstance2D" type="ColorRect" parent="SpeedUI"]
+physics_interpolation_mode = 0
+offset_left = 975.0
+offset_top = 48.0
+offset_right = 1105.0
+offset_bottom = 118.0
+color = Color(0.18120003, 0.18120006, 0.18120003, 1)
+
+[node name="SpeedLabel" type="Label" parent="SpeedUI"]
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.25
+anchor_bottom = 0.15
+offset_left = 750.4
+offset_top = 20.599998
+offset_right = 750.4
+offset_bottom = 20.599998
+theme_override_font_sizes/font_size = 42
+text = "10"
+horizontal_alignment = 2
+
+[node name="KmhLabel" type="Label" parent="SpeedUI"]
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.25
+anchor_bottom = 0.15
+offset_left = 983.4
+offset_top = 40.6
+offset_right = 983.4
+offset_bottom = 40.6
+theme_override_fonts/font = SubResource("FontVariation_ngrv3")
+theme_override_font_sizes/font_size = 20
+text = "kmh"
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.99436396, 0.106021106, 0, -0.106021106, 0.99436396, 0, 1, 10)
 visible = false
-material_override = SubResource("StandardMaterial3D_ngrv3")
-mesh = SubResource("CylinderMesh_fpvlf")
+light_energy = 1000.0
+light_projector = SubResource("DPITexture_fpvlf")
+light_size = 0.423
+spot_range = 217.554
 
-[node name="Lampu Kuning" type="MeshInstance3D" parent="."]
-transform = Transform3D(20, 0, 0, 0, -4.371139e-08, -17, 0, 1, -7.430936e-07, 412.93317, 268.47925, 1651.3331)
-visible = false
-material_override = SubResource("StandardMaterial3D_oiqtq")
-mesh = SubResource("CylinderMesh_fpvlf")
+[node name="Zebracross" type="Node3D" parent="."]
 
-[node name="Lampu Hijau" type="MeshInstance3D" parent="."]
-transform = Transform3D(20, 0, 0, 0, -4.371139e-08, -17, 0, 1, -7.430936e-07, 412.93317, 243.40582, 1651.3331)
-material_override = SubResource("StandardMaterial3D_hp4an")
-mesh = SubResource("CylinderMesh_fpvlf")
+[node name="Cross1" type="MeshInstance3D" parent="Zebracross"]
+transform = Transform3D(0.24, 0, 0, 0, 0.024, 0, 0, 0, 1.8, 0.21108222, 0, 10.7709)
+mesh = SubResource("BoxMesh_ngrv3")
+skeleton = NodePath("../..")
 
-[node name="zebra cross" type="MeshInstance3D" parent="."]
-transform = Transform3D(-6.5567083e-06, 0, -780, 0, 1, 0, 150, 0, -3.4094883e-05, 0, -3, 1778.197)
-material_override = SubResource("StandardMaterial3D_mc7i2")
-mesh = SubResource("BoxMesh_hp4an")
+[node name="Cross2" type="MeshInstance3D" parent="Zebracross"]
+transform = Transform3D(0.24, 0, 0, 0, 0.024, 0, 0, 0, 1.8, 0.6110822, 0, 10.7709)
+mesh = SubResource("BoxMesh_ngrv3")
+skeleton = NodePath("../..")
 
-[node name="Rambu Zebra" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 450, 0, 201.56958)
+[node name="Cross3" type="MeshInstance3D" parent="Zebracross"]
+transform = Transform3D(0.24, 0, 0, 0, 0.024, 0, 0, 0, 1.8, 1.0110822, 0, 10.7709)
+mesh = SubResource("BoxMesh_ngrv3")
+skeleton = NodePath("../..")
 
-[node name="tiang rambu zebra" type="MeshInstance3D" parent="Rambu Zebra"]
-transform = Transform3D(10, 0, 0, 0, 100, 0, 0, 0, 10, 0, 100, 0)
-material_override = SubResource("StandardMaterial3D_ahefr")
-mesh = SubResource("CylinderMesh_ngrv3")
+[node name="Cross4" type="MeshInstance3D" parent="Zebracross"]
+transform = Transform3D(0.24, 0, 0, 0, 0.024, 0, 0, 0, 1.8, 1.4110823, 0, 10.7709)
+mesh = SubResource("BoxMesh_ngrv3")
+skeleton = NodePath("../..")
 
-[node name="papan rambu zebra" type="MeshInstance3D" parent="Rambu Zebra"]
-transform = Transform3D(60, 0, 0, 0, 60, 0, 0, 0, 5, 0, 181.48, -7.5)
-material_override = SubResource("StandardMaterial3D_61vyl")
-mesh = SubResource("BoxMesh_61vyl")
+[node name="Cross5" type="MeshInstance3D" parent="Zebracross"]
+transform = Transform3D(0.24, 0, 0, 0, 0.024, 0, 0, 0, 1.8, 1.8158293, 0, 10.7709)
+mesh = SubResource("BoxMesh_ngrv3")
+skeleton = NodePath("../..")
+
+[node name="Cross6" type="MeshInstance3D" parent="Zebracross"]
+transform = Transform3D(0.24, 0, 0, 0, 0.024, 0, 0, 0, 1.8, 2.2158291, 0, 10.7709)
+mesh = SubResource("BoxMesh_ngrv3")
+skeleton = NodePath("../..")
+
+[node name="Cross7" type="MeshInstance3D" parent="Zebracross"]
+transform = Transform3D(0.24, 0, 0, 0, 0.024, 0, 0, 0, 1.8, 2.6158292, 0, 10.7709)
+mesh = SubResource("BoxMesh_ngrv3")
+skeleton = NodePath("../..")
+
+[node name="Cross8" type="MeshInstance3D" parent="Zebracross"]
+transform = Transform3D(0.24, 0, 0, 0, 0.024, 0, 0, 0, 1.8, 3.0158293, 0, 10.7709)
+mesh = SubResource("BoxMesh_ngrv3")
+skeleton = NodePath("../..")
+
+[node name="Cross9" type="MeshInstance3D" parent="Zebracross"]
+transform = Transform3D(0.24, 0, 0, 0, 0.024, 0, 0, 0, 1.8, 3.4110823, 0, 10.7709)
+mesh = SubResource("BoxMesh_ngrv3")
+skeleton = NodePath("../..")
+
+[node name="Cross10" type="MeshInstance3D" parent="Zebracross"]
+transform = Transform3D(0.24, 0, 0, 0, 0.024, 0, 0, 0, 1.8, -3.3974311, 0, 10.7709)
+mesh = SubResource("BoxMesh_ngrv3")
+skeleton = NodePath("../..")
+
+[node name="Cross11" type="MeshInstance3D" parent="Zebracross"]
+transform = Transform3D(0.24, 0, 0, 0, 0.024, 0, 0, 0, 1.8, -2.997431, 0, 10.7709)
+mesh = SubResource("BoxMesh_ngrv3")
+skeleton = NodePath("../..")
+
+[node name="Cross12" type="MeshInstance3D" parent="Zebracross"]
+transform = Transform3D(0.24, 0, 0, 0, 0.024, 0, 0, 0, 1.8, -2.5974314, 0, 10.7709)
+mesh = SubResource("BoxMesh_ngrv3")
+skeleton = NodePath("../..")
+
+[node name="Cross13" type="MeshInstance3D" parent="Zebracross"]
+transform = Transform3D(0.24, 0, 0, 0, 0.024, 0, 0, 0, 1.8, -2.1974313, 0, 10.7709)
+mesh = SubResource("BoxMesh_ngrv3")
+skeleton = NodePath("../..")
+
+[node name="Cross14" type="MeshInstance3D" parent="Zebracross"]
+transform = Transform3D(0.24, 0, 0, 0, 0.024, 0, 0, 0, 1.8, -1.7926843, 0, 10.7709)
+mesh = SubResource("BoxMesh_ngrv3")
+skeleton = NodePath("../..")
+
+[node name="Cross15" type="MeshInstance3D" parent="Zebracross"]
+transform = Transform3D(0.24, 0, 0, 0, 0.024, 0, 0, 0, 1.8, -1.3926843, 0, 10.7709)
+mesh = SubResource("BoxMesh_ngrv3")
+skeleton = NodePath("../..")
+
+[node name="Cross16" type="MeshInstance3D" parent="Zebracross"]
+transform = Transform3D(0.24, 0, 0, 0, 0.024, 0, 0, 0, 1.8, -0.99268425, 0, 10.7709)
+mesh = SubResource("BoxMesh_ngrv3")
+skeleton = NodePath("../..")
+
+[node name="Cross17" type="MeshInstance3D" parent="Zebracross"]
+transform = Transform3D(0.24, 0, 0, 0, 0.024, 0, 0, 0, 1.8, -0.59268415, 0, 10.7709)
+mesh = SubResource("BoxMesh_ngrv3")
+skeleton = NodePath("../..")
+
+[node name="Cross18" type="MeshInstance3D" parent="Zebracross"]
+transform = Transform3D(0.24, 0, 0, 0, 0.024, 0, 0, 0, 1.8, -0.1974312, 0, 10.7709)
+mesh = SubResource("BoxMesh_ngrv3")
+skeleton = NodePath("../..")
+
+[node name="Mobil" parent="." instance=ExtResource("2_dl44u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58203936, -54.369553)
+script = ExtResource("3_hp4an")
+
+[node name="Camera3D" type="Camera3D" parent="Mobil"]
+transform = Transform3D(-1, 2.0705045e-08, -8.4935486e-08, -9.122987e-09, 0.9415294, 0.33693096, 8.694542e-08, 0.33693096, -0.9415294, 0.038769364, 2.1806428, -3.8582268)
+fov = 83.43278
+
+[node name="clMobil" type="Area3D" parent="Mobil"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mobil/clMobil"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2287178)
+shape = SubResource("BoxShape3D_hp4an")
+debug_color = Color(0.9924529, 0, 0.25819597, 0.41960785)

@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://c8xdmbt3iqud"]
+
+[ext_resource type="PackedScene" uid="uid://mmpxxkx54f8q" path="res://Aset/siswa/scene.gltf" id="1_njcyr"]
+[ext_resource type="Script" uid="uid://ccgahe1r78nkw" path="res://tetot_2.gd" id="2_oq6qh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ngrv3"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.43, 0, 0.0071665575, 1)
+emission_energy_multiplier = 200.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_fpvlf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oiqtq"]
+albedo_color = Color(0.5186591, 0.4684993, 0.063896514, 1)
+emission_enabled = true
+emission = Color(0.36064115, 0.3271145, 0.03548016, 1)
+emission_energy_multiplier = 200.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hp4an"]
+albedo_color = Color(0.007774356, 0.16884315, 0.008776799, 1)
+emission_enabled = true
+emission = Color(0.021599993, 0.24, 0.03251999, 1)
+emission_energy_multiplier = 200.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_collision"]
+size = Vector3(30, 30, 30)
+
+[node name="Tetot2" type="Node3D"]
+script = ExtResource("2_oq6qh")
+
+[node name="Siswa" parent="." instance=ExtResource("1_njcyr")]
+transform = Transform3D(-24.273426, 0, -76.22861, 0, 80, 0, 76.22861, 0, -24.273426, 0, 0, 0)
+
+[node name="LampuMerah" type="MeshInstance3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, -4.371139e-08, -17, 0, 1, -7.430936e-07, 0, 50, 0)
+material_override = SubResource("StandardMaterial3D_ngrv3")
+mesh = SubResource("CylinderMesh_fpvlf")
+visible = false
+
+[node name="LampuKuning" type="MeshInstance3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, -4.371139e-08, -17, 0, 1, -7.430936e-07, 0, 30, 0)
+material_override = SubResource("StandardMaterial3D_oiqtq")
+mesh = SubResource("CylinderMesh_fpvlf")
+visible = false
+
+[node name="LampuHijau" type="MeshInstance3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, -4.371139e-08, -17, 0, 1, -7.430936e-07, 0, 10, 0)
+material_override = SubResource("StandardMaterial3D_hp4an")
+mesh = SubResource("CylinderMesh_fpvlf")
+visible = true
+
+[node name="CollisionBox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionBox"]
+shape = SubResource("BoxShape3D_collision")
