@@ -262,7 +262,7 @@ mesh = SubResource("BoxMesh_ngrv3")
 skeleton = NodePath("../..")
 
 [node name="Mobil" parent="." instance=ExtResource("2_dl44u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58203936, -54.369553)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0220587, 0.58203936, -54.369553)
 script = ExtResource("3_hp4an")
 
 [node name="Camera3D" type="Camera3D" parent="Mobil"]
