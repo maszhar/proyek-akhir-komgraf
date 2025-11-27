@@ -4,7 +4,7 @@ extends Node3D
 @export var YELLOW_DELAY_AFTER_TRIGGER: float = 0.5
 @export var RED_DELAY_AFTER_YELLOW: float = 2.0
 @export var SISWA_MOVE_DELAY: float = 5.0
-@export var SISWA_MOVE_AMOUNT_X: float = 9.0 # move left by -9 -> subtract this from current X
+@export var SISWA_MOVE_AMOUNT_X: float = 9.0
 
 # Node references 
 var lamp_green: MeshInstance3D
@@ -137,6 +137,9 @@ func _process(delta: float) -> void:
 			warning_label.modulate = Color(1.0, 0.0, 0.0) #
 			warning_label.text = "PELANGGARAN !!!"
 		_log("Red Light Violation")
+		timer = 2.0
+		_set_state("pelanggaran")
+	elif trigger_active and state == "pelanggaran" and pelanggaran == true and timer <= 0.0:
 		trigger_active = false
 		pelanggaran == false
 		_set_state("green")
@@ -242,6 +245,8 @@ func _set_state(new_state: String, force_show: bool=false) -> void:
 		_set_lamps(false, false, true)
 	elif new_state == "pre_yellow":
 		_set_lamps(false, false, false)
+	elif new_state == "pelanggaran":
+		_set_lamps(false, false, true)
 
 	_log("State changed -> %s" % new_state.to_upper())
 

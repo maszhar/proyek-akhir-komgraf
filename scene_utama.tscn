@@ -1,12 +1,14 @@
-[gd_scene load_steps=19 format=3 uid="uid://cllprdclbw3pk"]
+[gd_scene load_steps=21 format=3 uid="uid://cllprdclbw3pk"]
 
 [ext_resource type="PackedScene" uid="uid://mmpxxkx54f8q" path="res://Aset/siswa/scene.gltf" id="1_njcyr"]
+[ext_resource type="PackedScene" uid="uid://b540jemca2g5p" path="res://addons/kaykit_city_builder_bits/Assets/gltf/road_corner_curved.gltf" id="2_ahefr"]
 [ext_resource type="PackedScene" uid="uid://ds63f001264l1" path="res://Aset/mobil/scene.gltf" id="2_dl44u"]
 [ext_resource type="PackedScene" uid="uid://dferhi0rxwr57" path="res://city.tscn" id="2_oiqtq"]
 [ext_resource type="Script" uid="uid://ccgahe1r78nkw" path="res://Aset/mobil/scene.gd" id="3_hp4an"]
 [ext_resource type="Script" uid="uid://blg26253rdhlu" path="res://tetot_2.gd" id="3_ngrv3"]
 [ext_resource type="PackedScene" uid="uid://wfslmpq1tg44" path="res://Aset/rambu-rambu/rambu.tscn" id="4_fpvlf"]
 [ext_resource type="PackedScene" uid="uid://ibsy6u7wsrfn" path="res://jalan.tscn" id="5_hp4an"]
+[ext_resource type="Texture2D" uid="uid://bdsycv7o5g6jd" path="res://Aset/usermanual-pic.png" id="6_mc7i2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ground"]
 albedo_color = Color(0.4, 0.35, 0.25, 1)
@@ -54,6 +56,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 material_override = SubResource("StandardMaterial3D_ground")
 mesh = SubResource("PlaneMesh_ground")
 
+[node name="GroundCollider" type="StaticBody3D" parent="Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/GroundCollider"]
+
 [node name="Terrain" type="Node3D" parent="."]
 
 [node name="Jalan1" parent="." instance=ExtResource("5_hp4an")]
@@ -61,6 +67,24 @@ transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, -14.369553)
 
 [node name="Jalan2" parent="." instance=ExtResource("5_hp4an")]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 73.63045)
+
+[node name="Jalan3" parent="." instance=ExtResource("5_hp4an")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 19.299683, 0, -14.369553)
+
+[node name="Jalan4" parent="." instance=ExtResource("5_hp4an")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 19.299683, 0, 73.63045)
+
+[node name="road_corner_curved2" parent="." instance=ExtResource("2_ahefr")]
+transform = Transform3D(0.0009771665, 0, 8, 0, 8, 0, -8, 0, 0.0009771665, 2.9702382, -0.6, 104.83181)
+
+[node name="road_corner_curved3" parent="." instance=ExtResource("2_ahefr")]
+transform = Transform3D(-7.999614, 0, 0.0786075, 0, 8, 0, -0.0786075, 0, -7.999614, 16.772387, -0.6, 104.89247)
+
+[node name="road_corner_curved4" parent="." instance=ExtResource("2_ahefr")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 2.9702382, -0.6, -70.31483)
+
+[node name="road_corner_curved5" parent="." instance=ExtResource("2_ahefr")]
+transform = Transform3D(9.5399045e-08, 0, -8, 0, 8, 0, 8, 0, 9.5399045e-08, 16.772387, -0.6, -70.254166)
 
 [node name="City" parent="." instance=ExtResource("2_oiqtq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.369553)
@@ -158,10 +182,10 @@ anchor_left = 0.05
 anchor_top = 0.05
 anchor_right = 0.25
 anchor_bottom = 0.15
-offset_left = 915.0
+offset_left = 750.4
 offset_top = 20.599998
-offset_right = 724.0
-offset_bottom = 6.599991
+offset_right = 750.4
+offset_bottom = 20.599998
 theme_override_font_sizes/font_size = 42
 text = "10"
 horizontal_alignment = 2
@@ -172,13 +196,110 @@ anchor_left = 0.05
 anchor_top = 0.05
 anchor_right = 0.25
 anchor_bottom = 0.15
-offset_left = 985.0
+offset_left = 983.4
 offset_top = 40.6
-offset_right = 783.0
-offset_bottom = -3.0000076
+offset_right = 983.4
+offset_bottom = 40.6
 theme_override_fonts/font = SubResource("FontVariation_ngrv3")
 theme_override_font_sizes/font_size = 20
-text = "km/h"
+text = "kmh"
+
+[node name="UserManual" type="CanvasLayer" parent="."]
+
+[node name="MeshInstance2D3" type="ColorRect" parent="UserManual"]
+physics_interpolation_mode = 0
+modulate = Color(1, 1, 1, 0.39215687)
+offset_left = 5.0
+offset_top = 481.0
+offset_right = 245.0
+offset_bottom = 631.0
+color = Color(0.26983154, 0.67117935, 0.9999991, 1)
+
+[node name="MeshInstance2D4" type="ColorRect" parent="UserManual"]
+physics_interpolation_mode = 0
+modulate = Color(1, 1, 1, 0.39215687)
+light_mask = 0
+offset_left = 7.0
+offset_top = 483.0
+offset_right = 247.0
+offset_bottom = 633.0
+color = Color(0.18120003, 0.18120006, 0.18120003, 1)
+
+[node name="maju" type="Label" parent="UserManual"]
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.25
+anchor_bottom = 0.15
+offset_left = -55.600002
+offset_top = 435.6
+offset_right = -55.599976
+offset_bottom = 435.59998
+theme_override_fonts/font = SubResource("FontVariation_ngrv3")
+theme_override_font_sizes/font_size = 14
+text = "Maju"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 1
+
+[node name="mundur" type="Label" parent="UserManual"]
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.25
+anchor_bottom = 0.15
+offset_left = -52.600002
+offset_top = 546.6
+offset_right = -52.599976
+offset_bottom = 546.6
+theme_override_fonts/font = SubResource("FontVariation_ngrv3")
+theme_override_font_sizes/font_size = 14
+text = "Mundur"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="kanan" type="Label" parent="UserManual"]
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.25
+anchor_bottom = 0.15
+offset_left = 36.399998
+offset_top = 515.6
+offset_right = 36.400024
+offset_bottom = 515.6
+theme_override_fonts/font = SubResource("FontVariation_ngrv3")
+theme_override_font_sizes/font_size = 14
+text = "Kanan"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="kiri" type="Label" parent="UserManual"]
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.25
+anchor_bottom = 0.15
+offset_left = -137.6
+offset_top = 513.6
+offset_right = -137.59998
+offset_bottom = 513.6
+theme_override_fonts/font = SubResource("FontVariation_ngrv3")
+theme_override_font_sizes/font_size = 14
+text = "Kiri"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="UserManual"]
+offset_left = 42.0
+offset_top = 484.0
+offset_right = 542.0
+offset_bottom = 984.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_mc7i2")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.99436396, 0.106021106, 0, -0.106021106, 0.99436396, 0, 1, 10)
