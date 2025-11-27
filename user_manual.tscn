@@ -1,0 +1,102 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmnsptod125xa"]
+
+[ext_resource type="Texture2D" uid="uid://bdsycv7o5g6jd" path="res://Aset/usermanual-pic.png" id="1_bv7m8"]
+
+[sub_resource type="FontVariation" id="FontVariation_ngrv3"]
+
+[node name="UserManual" type="CanvasLayer"]
+
+[node name="MeshInstance2D3" type="ColorRect" parent="."]
+physics_interpolation_mode = 0
+modulate = Color(1, 1, 1, 0.39215687)
+offset_left = 5.0
+offset_top = 481.0
+offset_right = 245.0
+offset_bottom = 631.0
+color = Color(0.26983154, 0.67117935, 0.9999991, 1)
+
+[node name="MeshInstance2D4" type="ColorRect" parent="."]
+physics_interpolation_mode = 0
+modulate = Color(1, 1, 1, 0.39215687)
+light_mask = 0
+offset_left = 7.0
+offset_top = 483.0
+offset_right = 247.0
+offset_bottom = 633.0
+color = Color(0.18120003, 0.18120006, 0.18120003, 1)
+
+[node name="maju" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.25
+anchor_bottom = 0.15
+offset_left = -55.600002
+offset_top = 435.6
+offset_right = -55.599976
+offset_bottom = 435.59998
+theme_override_fonts/font = SubResource("FontVariation_ngrv3")
+theme_override_font_sizes/font_size = 14
+text = "Maju"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 1
+
+[node name="mundur" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.25
+anchor_bottom = 0.15
+offset_left = -52.600002
+offset_top = 546.6
+offset_right = -52.599976
+offset_bottom = 546.6
+theme_override_fonts/font = SubResource("FontVariation_ngrv3")
+theme_override_font_sizes/font_size = 14
+text = "Mundur"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="kanan" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.25
+anchor_bottom = 0.15
+offset_left = 36.399998
+offset_top = 515.6
+offset_right = 36.400024
+offset_bottom = 515.6
+theme_override_fonts/font = SubResource("FontVariation_ngrv3")
+theme_override_font_sizes/font_size = 14
+text = "Kanan"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="kiri" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.25
+anchor_bottom = 0.15
+offset_left = -137.6
+offset_top = 513.6
+offset_right = -137.59998
+offset_bottom = 513.6
+theme_override_fonts/font = SubResource("FontVariation_ngrv3")
+theme_override_font_sizes/font_size = 14
+text = "Kiri"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 42.0
+offset_top = 484.0
+offset_right = 542.0
+offset_bottom = 984.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_bv7m8")

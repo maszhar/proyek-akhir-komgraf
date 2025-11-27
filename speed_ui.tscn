@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnxuqhk4nuqi"]
+
+[sub_resource type="FontVariation" id="FontVariation_ngrv3"]
+
+[node name="SpeedUI" type="CanvasLayer"]
+
+[node name="MeshInstance2D2" type="ColorRect" parent="."]
+physics_interpolation_mode = 0
+offset_right = 134.0
+offset_bottom = 74.0
+color = Color(0.26983154, 0.67117935, 0.9999991, 1)
+
+[node name="MeshInstance2D" type="ColorRect" parent="."]
+physics_interpolation_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 132.0
+offset_bottom = 72.0
+color = Color(0.18120003, 0.18120006, 0.18120003, 1)
+
+[node name="SpeedLabel" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.056
+anchor_right = 0.25
+anchor_bottom = 0.15
+offset_left = -50.600002
+offset_top = -30.288002
+offset_right = -218.0
+offset_bottom = -27.400002
+theme_override_font_sizes/font_size = 42
+text = "10"
+horizontal_alignment = 2
+
+[node name="KmhLabel" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.25
+anchor_bottom = 0.15
+offset_left = 16.399998
+offset_top = -3.4000015
+offset_right = -151.0
+offset_bottom = -37.200005
+theme_override_fonts/font = SubResource("FontVariation_ngrv3")
+theme_override_font_sizes/font_size = 20
+text = "kmh"
